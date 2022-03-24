@@ -1,0 +1,37 @@
+.header {
+  background-color: var(--madison);
+  display: flex;
+  height: 72px;
+  justify-content: flex-end;
+  padding: 0 30px;
+}
+
+.info h3 {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21.79px;
+  margin: 0;
+  margin-top: 17px;
+}
+
+.info p {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16.34px;
+  margin-top: 3px;
+  text-align: end;
+}
+
+.profile-picture {
+  align-items: center;
+  display: flex;
+  margin-left: 15px;
+}
+
+.profile-picture img {
+  height: 60px;
+  border-radius: 50%;
+  width: 60px;
+}
