@@ -1,14 +1,5 @@
 body {
+  color: white;
   margin: 0;
   font-family: "Open Sans", sans-serif;
-}
-
-:root {
-  --amaranth: #ec3f5f;
-  --lima: #86c51f;
-  --madison: #2e3c56;
-  --midnight: #222e44;
-  --summersky: #1dbad3;
-  --ultramarine: #1e0d83;
-  --zircon: #dee2e6;
 }
