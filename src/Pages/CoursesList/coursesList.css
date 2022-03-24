@@ -1,0 +1,19 @@
+.container {
+  padding: 30px;
+}
+
+.container-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 29.96px;
+  margin: 0;
+  margin-top: -3px;
+}
