@@ -1,0 +1,25 @@
+/* colors */
+:root {
+  --amaranth: #ec3f5f;
+  --lima: #86c51f;
+  --madison: #2e3c56;
+  --midnight: #222e44;
+  --nightRider: #333333;
+  --solitude: #e5e5e5;
+  --summersky: #1dbad3;
+  --ultramarine: #1e0d83;
+  --whiteSmoke: #f5f9f9;
+  --zircon: #dee2e6;
+}
+
+.primary {
+  background-color: var(--summersky);
+}
+
+.success {
+  background-color: var(--lima);
+}
+
+.danger {
+  background-color: var(--amaranth);
+}
