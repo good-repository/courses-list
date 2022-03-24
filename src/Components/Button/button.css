@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24.51px;
+}
+
+.button.primary:hover {
+  opacity: 0.8;
+}
+
+/* sizes */
+.large {
+  height: 35px;
+  width: 250px;
+}
