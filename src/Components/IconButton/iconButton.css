@@ -1,0 +1,20 @@
+.icon-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/*sizes */
+.default {
+  padding: 15px;
+}
+
+.small {
+  padding: 10px;
+}
