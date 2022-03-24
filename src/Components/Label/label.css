@@ -1,0 +1,11 @@
+.label {
+  align-items: center;
+  border-radius: 15px;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  height: 25px;
+  justify-content: center;
+  line-height: 19.07px;
+  width: 120px;
+}
