@@ -7,7 +7,7 @@ export default function TextArea({ label, id, name, onChange }) {
       <label htmlFor={id} className="textArea-label">
         {label}
       </label>
-      <textArea id={id} name={name} onChange={onChange} />
+      <textarea id={id} name={name} onChange={onChange} />
     </div>
   );
 }
