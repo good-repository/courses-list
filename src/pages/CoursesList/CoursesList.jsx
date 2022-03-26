@@ -46,8 +46,9 @@ export default function CoursesList() {
         </Button>
       </div>
       {courses?.length &&
-        courses.map((course) => (
+        courses.map((course, index) => (
           <CourseCard
+            key={index}
             labelText={course.enable ? "HABILITADO" : "DESABILITADO"}
             labelColor={course.enable ? "success" : "danger"}
             img={course.image}
