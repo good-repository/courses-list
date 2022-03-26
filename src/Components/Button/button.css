@@ -5,6 +5,7 @@
   cursor: pointer;
   font-size: 18px;
   font-weight: 400;
+  height: 35px;
   line-height: 24.51px;
 }
 
@@ -14,6 +15,9 @@
 
 /* sizes */
 .large {
-  height: 35px;
   width: 250px;
+}
+
+.medium {
+  width: 200px;
 }

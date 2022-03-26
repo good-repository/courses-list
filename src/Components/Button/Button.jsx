@@ -2,7 +2,7 @@ import React from "react";
 import "./button.css";
 
 export default function Button({
-  size = "large",
+  size = "medium",
   color = "primary",
   children,
   onClick,
