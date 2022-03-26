@@ -26,7 +26,7 @@ export default function SlidableSidebar({
             <span class="tooltip-text">{tooltipText}</span>
           </div>
         </div>
-        <div>{children}</div>
+        <div className="slidable-children">{children}</div>
       </div>
     )
   );
