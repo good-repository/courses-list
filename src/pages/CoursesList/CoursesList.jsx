@@ -8,13 +8,22 @@ import {
   SlidableSidebar,
 } from "../../components";
 import { CourseCard } from "./components";
-
-import svelte from "../../assets/svelte-banner.svg";
-import react from "../../assets/react-banner.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { addCourseRequest } from "../../store/slices/courses/actions";
 
 export default function CoursesList() {
-  const [showSideBar, setShowSideBar] = useState(true);
+  const [showSideBar, setShowSideBar] = useState(false);
   const [image, setImage] = useState(null);
+  const courses = useSelector((state) => state.courses.courses);
+  console.log(
+    "🚀 ~ file: CoursesList.jsx ~ line 17 ~ CoursesList ~ courses",
+    courses
+  );
+  const dispatch = useDispatch();
+
+  const addCourse = (data) => {
+    dispatch(addCourseRequest(data));
+  };
 
   return (
     <div className="container">
@@ -24,19 +33,16 @@ export default function CoursesList() {
           NOVO TREINAMENTO
         </Button>
       </div>
-      <CourseCard
-        labelText="HABILITADO"
-        img={svelte}
-        subtitle="Um curso para introdução ao Svelte com tecnologias modernas"
-        title="Curso de Svelte"
-      />
-      <CourseCard
-        labelText="DESABILITADO"
-        labelColor="danger"
-        img={react}
-        subtitle="Como criar aplicativos utilizando React para escalar as suas aplicações ao infinito"
-        title="Curso de React"
-      />
+      {courses?.length &&
+        courses.map((course) => (
+          <CourseCard
+            labelText={course.enable ? "HABILITADO" : "DESABILITADO"}
+            labelColor={course.enable ? "success" : "danger"}
+            img={course.image}
+            subtitle={course.description}
+            title={course.title}
+          />
+        ))}
 
       <SlidableSidebar
         open={showSideBar}
@@ -60,7 +66,9 @@ export default function CoursesList() {
               />
             </div>
             <div className="course-list-bottom-button">
-              <Button color="success">CRIAR</Button>
+              <Button color="success" onClick={addCourse}>
+                CRIAR
+              </Button>
             </div>
           </div>
         </div>
