@@ -8,6 +8,7 @@ export default function Input({
   name,
   onChange,
   error,
+  value,
 }) {
   return (
     <div className="input">
@@ -20,6 +21,7 @@ export default function Input({
         name={name}
         onChange={onChange}
         className={error ? "input-error" : ""}
+        value={value}
       />
       {error && <p className="input-label-error">{error}</p>}
     </div>

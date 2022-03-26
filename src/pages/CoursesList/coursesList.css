@@ -46,6 +46,11 @@
   justify-content: flex-end;
   margin-bottom: 50px;
 }
+.course-list-bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
 
 .course-list-form {
   align-items: center;

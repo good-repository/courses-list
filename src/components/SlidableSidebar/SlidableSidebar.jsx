@@ -10,7 +10,7 @@ export default function SlidableSidebar({
   children,
 }) {
   function closeSideBar() {
-    handleClose(false);
+    handleClose();
   }
 
   return (
