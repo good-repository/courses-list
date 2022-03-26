@@ -23,7 +23,7 @@ export default function SlidableSidebar({
           <p className="slidable-title">{title}</p>
           <div className="tooltip">
             <Question />
-            <span class="tooltip-text">{tooltipText}</span>
+            <span className="tooltip-text">{tooltipText}</span>
           </div>
         </div>
         <div className="slidable-children">{children}</div>

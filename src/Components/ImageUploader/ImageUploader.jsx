@@ -12,7 +12,7 @@ export default function ImageUploader({ image, setImage }) {
 
   return (
     <>
-      <label for="courseImage" className="img-uploader">
+      <label htmlFor="courseImage" className="img-uploader">
         {!image && (
           <>
             <Camera />
