@@ -3,6 +3,7 @@
   background-color: var(--lilyWhite);
   color: black;
   height: 100%;
+  overflow-y: auto;
   position: fixed;
   right: 0;
   top: 0;
