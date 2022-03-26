@@ -6,6 +6,7 @@ import {
   ImageUploader,
   Input,
   SlidableSidebar,
+  TextArea,
 } from "../../components";
 import { CourseCard } from "./components";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +14,7 @@ import { addCourseRequest } from "../../store/slices/courses/actions";
 import { useFormik } from "formik";
 
 export default function CoursesList() {
-  const [showSideBar, setShowSideBar] = useState(true);
+  const [showSideBar, setShowSideBar] = useState(false);
   const courses = useSelector((state) => state.courses.courses);
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -26,7 +27,9 @@ export default function CoursesList() {
       courseDeactivation: null,
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      addCourse(values);
+      setShowSideBar(false);
+      formik.resetForm();
     },
   });
 
@@ -34,6 +37,10 @@ export default function CoursesList() {
     dispatch(addCourseRequest(data));
   };
 
+  console.log(
+    "🚀 ~ file: CoursesList.jsx ~ line 58 ~ CoursesList ~ courses",
+    courses
+  );
   return (
     <div className="container">
       <div className="container-header">
@@ -60,7 +67,7 @@ export default function CoursesList() {
         tooltipText="Você está prestes a criar um novo treinamento, capriche nas informações, quanto mais detalhadas melhor!"
       >
         <div className="course-list-sidebar">
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} className="course-list-form">
             <ImageUploader
               image={formik.values.image}
               name="image"
@@ -70,10 +77,10 @@ export default function CoursesList() {
               <Input
                 label="Nome"
                 id="name"
-                name="name"
+                name="title"
                 onChange={formik.handleChange}
               />
-              <Input
+              <TextArea
                 label="Descrição"
                 size="large"
                 id="description"
@@ -103,19 +110,7 @@ export default function CoursesList() {
                 />
               </div>
               <div className="course-list-bottom-button">
-                <Button
-                  color="success"
-                  // onClick={() =>
-                  //   addCourse({
-                  //     image: null,
-                  //     title: "Curso para testes",
-                  //     description:
-                  //       "Como criar aplicativos utilizando React para escalar as suas aplicações ao infinito",
-                  //     enable: false,
-                  //   })
-                  // }
-                  type="submit"
-                >
+                <Button color="success" type="submit">
                   CRIAR
                 </Button>
               </div>

@@ -47,6 +47,13 @@
   margin-bottom: 50px;
 }
 
+.course-list-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .container-header {
     flex-wrap: wrap;
