@@ -1,5 +1,5 @@
 import Routes from "./Routes";
-import { Breadcrumb, Header, Sidebar } from "./Components";
+import { Breadcrumb, Header, Sidebar } from "./components";
 import "./app.css";
 
 function App() {

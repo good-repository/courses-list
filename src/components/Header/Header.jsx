@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import profilePicture from "../../Assets/guilherme.jpg";
+import profilePicture from "../../assets/guilherme.jpg";
 
 export default function Header() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./breadcrumb.css";
-import { ChevronRight } from "../../Icons";
+import { ChevronRight } from "../../icons";
 export default function Breadcrumb() {
   return (
     <nav className="breadcrumb">

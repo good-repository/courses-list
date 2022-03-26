@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera } from "../../Icons";
+import { Camera } from "../../icons";
 import "./imageUploader.css";
 
 export default function ImageUploader({ image, setImage }) {

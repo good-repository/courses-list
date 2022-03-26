@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Book, House, List } from "../../Icons";
+import { Book, House, List } from "../../icons";
 import IconButton from "../IconButton/IconButton";
 import "./sidebar.css";
 

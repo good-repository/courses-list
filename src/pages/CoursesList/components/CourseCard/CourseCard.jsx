@@ -1,7 +1,7 @@
 import React from "react";
 import "./courseCard.css";
-import { IconButton, Label } from "../../../../Components";
-import { Pencil, Trash } from "../../../../Icons";
+import { IconButton, Label } from "../../../../components";
+import { Pencil, Trash } from "../../../../icons";
 
 export default function CourseCard({
   img,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Close, Question } from "../../Icons";
+import { Close, Question } from "../../icons";
 import "./slidableSidebar.css";
 
 export default function SlidableSidebar({

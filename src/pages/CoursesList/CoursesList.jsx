@@ -6,11 +6,11 @@ import {
   ImageUploader,
   Input,
   SlidableSidebar,
-} from "../../Components";
-import { CourseCard } from "./Components";
+} from "../../components";
+import { CourseCard } from "./components";
 
-import svelte from "../../Assets/svelte-banner.svg";
-import react from "../../Assets/react-banner.svg";
+import svelte from "../../assets/svelte-banner.svg";
+import react from "../../assets/react-banner.svg";
 
 export default function CoursesList() {
   const [showSideBar, setShowSideBar] = useState(true);

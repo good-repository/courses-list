@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import CoursesList from "./Pages/CoursesList/CoursesList";
+import CoursesList from "./pages/CoursesList/CoursesList";
 export default function AppRoutes() {
   let navigate = useNavigate();
 
