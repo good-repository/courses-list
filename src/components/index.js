@@ -8,6 +8,7 @@ import Input from "./Input/Input";
 import Label from "./Label/Label";
 import Sidebar from "./Sidebar/Sidebar";
 import SlidableSidebar from "./SlidableSidebar/SlidableSidebar";
+import TextArea from "./TextArea/TextArea";
 
 export {
   Breadcrumb,
@@ -20,4 +21,5 @@ export {
   Label,
   Sidebar,
   SlidableSidebar,
+  TextArea,
 };

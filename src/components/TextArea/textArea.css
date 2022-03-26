@@ -1,0 +1,27 @@
+.textArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.textArea textArea {
+  border: none;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-family: Open Sans;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: 200px;
+  line-height: 21.79px;
+  margin-bottom: 30px;
+  padding: 17px 19px;
+  resize: none;
+}
+
+.textArea-label {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24.51px;
+  margin-bottom: 6px;
+}
