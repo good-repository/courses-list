@@ -12,20 +12,26 @@ import { CourseCard } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { addCourseRequest } from "../../store/slices/courses/actions";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  title: Yup.string().required("Campo obrigatório"),
+});
 
 export default function CoursesList() {
-  const [showSideBar, setShowSideBar] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(true);
   const courses = useSelector((state) => state.courses.courses);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       image: null,
-      name: "",
+      title: "",
       description: "",
       workload: "",
       courseActivation: null,
       courseDeactivation: null,
     },
+    validationSchema,
     onSubmit: (values) => {
       addCourse(values);
       setShowSideBar(false);
@@ -41,7 +47,7 @@ export default function CoursesList() {
     <div className="container">
       <div className="container-header">
         <h2 className="title">SEUS TREINAMENTOS</h2>
-        <Button size="large" onClick={() => setShowSideBar(true)}>
+        <Button size="large" onClick={() => setShowSideBar(false)}>
           NOVO TREINAMENTO
         </Button>
       </div>
@@ -76,6 +82,7 @@ export default function CoursesList() {
                 id="name"
                 name="title"
                 onChange={formik.handleChange}
+                error={formik.errors.title}
               />
               <TextArea
                 label="Descrição"

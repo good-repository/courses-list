@@ -15,6 +15,7 @@
   height: 40px;
   line-height: 21.79px;
   margin-bottom: 30px;
+  outline: none;
   padding: 0 19px;
 }
 
@@ -23,4 +24,15 @@
   font-weight: 400;
   line-height: 24.51px;
   margin-bottom: 6px;
+}
+
+.input .input-error {
+  border: 2px solid var(--amaranth);
+  margin-bottom: 0;
+}
+
+.input-label-error {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  color: var(--amaranth);
 }
