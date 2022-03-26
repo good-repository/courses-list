@@ -15,6 +15,7 @@ export default function CourseCard({
       {img && (
         <img src={img} alt="course logo" className="course-card-banner" />
       )}
+      {!img && <div className="course-card-no-image" />}
       <div className="course-card-content">
         <div>
           <p className="course-card-title">{title}</p>
