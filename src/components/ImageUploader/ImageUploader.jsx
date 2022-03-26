@@ -2,7 +2,7 @@ import React from "react";
 import { Camera } from "../../icons";
 import "./imageUploader.css";
 
-export default function ImageUploader({ image, setImage }) {
+export default function ImageUploader({ image, setImage, name }) {
   const handleImageChange = (e) => {
     const lastImage = e.target.files[e.target.files.length - 1];
     URL.createObjectURL(lastImage);
@@ -35,6 +35,7 @@ export default function ImageUploader({ image, setImage }) {
         accept="image/*"
         style={{ display: "none" }}
         onChange={handleImageChange}
+        name={name}
       />
     </>
   );

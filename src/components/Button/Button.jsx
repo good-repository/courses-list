@@ -6,9 +6,10 @@ export default function Button({
   color = "primary",
   children,
   onClick,
+  type = "button",
 }) {
   return (
-    <button onClick={onClick} className={`button ${size} ${color}`}>
+    <button type={type} onClick={onClick} className={`button ${size} ${color}`}>
       {children}
     </button>
   );

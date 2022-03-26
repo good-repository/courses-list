@@ -10,16 +10,25 @@ import {
 import { CourseCard } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { addCourseRequest } from "../../store/slices/courses/actions";
+import { useFormik } from "formik";
 
 export default function CoursesList() {
-  const [showSideBar, setShowSideBar] = useState(false);
-  const [image, setImage] = useState(null);
+  const [showSideBar, setShowSideBar] = useState(true);
   const courses = useSelector((state) => state.courses.courses);
-  console.log(
-    "🚀 ~ file: CoursesList.jsx ~ line 17 ~ CoursesList ~ courses",
-    courses
-  );
   const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      image: null,
+      name: "",
+      description: "",
+      workload: "",
+      courseActivation: null,
+      courseDeactivation: null,
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const addCourse = (data) => {
     dispatch(addCourseRequest(data));
@@ -51,26 +60,67 @@ export default function CoursesList() {
         tooltipText="Você está prestes a criar um novo treinamento, capriche nas informações, quanto mais detalhadas melhor!"
       >
         <div className="course-list-sidebar">
-          <ImageUploader image={image} setImage={setImage} />
-          <div className="course-list-name-input">
-            <Input label="Nome" id="name" />
-            <Input label="Descrição" size="large" id="description" />
-            <Input label="Carga horária" id="workload" />
-            <div className="course-list-double-inputs">
-              <DateInput label="Ativação do curso" id="course-activation" />
-              <DateInput
-                label="Desativação do curso"
-                id="course-deactivation"
-                //format to today ISO format yyyy-mm-dd
-                minDate={new Date().toISOString().substring(0, 10)}
+          <form onSubmit={formik.handleSubmit}>
+            <ImageUploader
+              image={formik.values.image}
+              name="image"
+              setImage={(img) => formik.setFieldValue("image", img)}
+            />
+            <div className="course-list-name-input">
+              <Input
+                label="Nome"
+                id="name"
+                name="name"
+                onChange={formik.handleChange}
               />
+              <Input
+                label="Descrição"
+                size="large"
+                id="description"
+                name="description"
+                onChange={formik.handleChange}
+              />
+              <Input
+                label="Carga horária"
+                id="workload"
+                name="workload"
+                onChange={formik.handleChange}
+              />
+              <div className="course-list-double-inputs">
+                <DateInput
+                  label="Ativação do curso"
+                  id="course-activation"
+                  name="courseActivation"
+                  onChange={formik.handleChange}
+                />
+                <DateInput
+                  label="Desativação do curso"
+                  id="course-deactivation"
+                  //format to today ISO format yyyy-mm-dd
+                  minDate={new Date().toISOString().substring(0, 10)}
+                  name="courseDeactivation"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="course-list-bottom-button">
+                <Button
+                  color="success"
+                  // onClick={() =>
+                  //   addCourse({
+                  //     image: null,
+                  //     title: "Curso para testes",
+                  //     description:
+                  //       "Como criar aplicativos utilizando React para escalar as suas aplicações ao infinito",
+                  //     enable: false,
+                  //   })
+                  // }
+                  type="submit"
+                >
+                  CRIAR
+                </Button>
+              </div>
             </div>
-            <div className="course-list-bottom-button">
-              <Button color="success" onClick={addCourse}>
-                CRIAR
-              </Button>
-            </div>
-          </div>
+          </form>
         </div>
       </SlidableSidebar>
     </div>
