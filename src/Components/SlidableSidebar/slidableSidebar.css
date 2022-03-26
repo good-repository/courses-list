@@ -1,0 +1,60 @@
+.slidable {
+  animation: animateRight 0.4s;
+  background-color: var(--lilyWhite);
+  color: black;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 580px;
+}
+
+@keyframes animateRight {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.slidable-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 35px;
+}
+
+.button-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.slidable-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 29.96px;
+}
+
+.tooltip .tooltip-text {
+  background-color: var(--nightRider);
+  border-radius: 6px;
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+  visibility: hidden;
+  width: 250px;
+
+  position: absolute;
+  right: 10%;
+  top: 40px;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
