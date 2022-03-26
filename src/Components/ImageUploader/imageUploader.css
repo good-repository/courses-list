@@ -1,0 +1,25 @@
+.img-uploader {
+  align-items: center;
+  background-color: white;
+  background-image: url("../../Assets/dashed-border.svg");
+  background-size: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  width: 170px;
+}
+
+.img-uploader-text {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400px;
+  line-height: 16.34px;
+}
+
+.course-image-uploader {
+  border-radius: 10px;
+  object-fit: cover;
+}

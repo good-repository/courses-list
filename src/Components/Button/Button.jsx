@@ -5,6 +5,11 @@ export default function Button({
   size = "large",
   color = "primary",
   children,
+  onClick,
 }) {
-  return <button className={`button ${size} ${color}`}>{children}</button>;
+  return (
+    <button onClick={onClick} className={`button ${size} ${color}`}>
+      {children}
+    </button>
+  );
 }
