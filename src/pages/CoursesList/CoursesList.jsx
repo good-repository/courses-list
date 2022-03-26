@@ -37,10 +37,6 @@ export default function CoursesList() {
     dispatch(addCourseRequest(data));
   };
 
-  console.log(
-    "🚀 ~ file: CoursesList.jsx ~ line 58 ~ CoursesList ~ courses",
-    courses
-  );
   return (
     <div className="container">
       <div className="container-header">
