@@ -18,7 +18,7 @@ export default function CourseCard({
           <p className="course-card-title">{title}</p>
           <p className="course-card-subtitle">{subtitle}</p>
         </div>
-        <div>
+        <div className="cours-card-cta">
           {labelText && <Label color={labelColor}>{labelText}</Label>}
           <div className="course-card-actions">
             <IconButton icon={<Pencil />} size="small" />

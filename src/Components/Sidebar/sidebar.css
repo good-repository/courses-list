@@ -16,3 +16,9 @@
 .home {
   margin-bottom: 14px;
 }
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 75px;
+  }
+}

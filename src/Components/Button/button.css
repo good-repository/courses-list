@@ -21,3 +21,15 @@
 .medium {
   width: 200px;
 }
+
+@media screen and (max-width: 375px) {
+  .button {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    width: 100%;
+  }
+}
