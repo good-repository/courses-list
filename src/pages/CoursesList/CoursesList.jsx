@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function CoursesList() {
-  const [showSideBar, setShowSideBar] = useState(true);
+  const [showSideBar, setShowSideBar] = useState(false);
   const courses = useSelector((state) => state.courses.courses);
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -47,7 +47,7 @@ export default function CoursesList() {
     <div className="container">
       <div className="container-header">
         <h2 className="title">SEUS TREINAMENTOS</h2>
-        <Button size="large" onClick={() => setShowSideBar(false)}>
+        <Button size="large" onClick={() => setShowSideBar(true)}>
           NOVO TREINAMENTO
         </Button>
       </div>
