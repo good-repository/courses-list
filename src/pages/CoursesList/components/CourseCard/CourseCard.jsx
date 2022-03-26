@@ -12,7 +12,9 @@ export default function CourseCard({
 }) {
   return (
     <div className="container-course-card">
-      <img src={img} alt="svekte" className="course-card-banner" />
+      {img && (
+        <img src={img} alt="course logo" className="course-card-banner" />
+      )}
       <div className="course-card-content">
         <div>
           <p className="course-card-title">{title}</p>
