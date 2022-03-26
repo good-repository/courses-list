@@ -17,3 +17,51 @@
   margin: 0;
   margin-top: -3px;
 }
+
+.course-list-sidebar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 33px;
+}
+
+.course-list-name-input {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.course-list-double-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.course-list-double-inputs input {
+  width: 192px;
+}
+
+.course-list-bottom-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .container-header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .course-list-double-inputs {
+    display: block;
+  }
+
+  .course-list-double-inputs input {
+    width: calc(100% - 38px);
+  }
+}
