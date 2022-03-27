@@ -3,7 +3,7 @@ import { IconButton, Label } from "../../../../components";
 import { Pencil, Trash } from "../../../../icons";
 import "./moduleCard.css";
 
-export default function ModuleCard({ module, index }) {
+export default function ModuleCard({ module, index, editModule }) {
   return (
     <div className="module-card">
       <img src={module.image} alt="module logo" className="module-card-logo" />
@@ -12,7 +12,11 @@ export default function ModuleCard({ module, index }) {
           <p className="module-card-title">
             {index + 1}. {module.title}
           </p>
-          <IconButton icon={<Pencil />} size="small" />
+          <IconButton
+            icon={<Pencil />}
+            size="small"
+            onClick={() => editModule(module)}
+          />
         </div>
         <p className="module-card-description">{module.description}</p>
         <p className="module-card-classes">
