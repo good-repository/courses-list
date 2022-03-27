@@ -54,7 +54,9 @@ export default function CoursesList() {
       const payload = {
         ...formik.values,
         enable: true,
+        //check what is the last id, if have none, assumes 1
         id: courses.length ? courses[courses.length - 1].id + 1 : 1,
+        modules: courseToEdit ? courseToEdit.modules : [],
       };
       dispatch(addCourseRequest(payload));
     }
