@@ -88,3 +88,12 @@
   flex-wrap: wrap;
   gap: 25px;
 }
+
+.modules-sidebar-uploader {
+  display: flex;
+  justify-content: center;
+}
+
+.module-sidebar-footer {
+  margin-top: 50px;
+}
