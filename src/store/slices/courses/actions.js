@@ -33,9 +33,10 @@ export function removeCourseSet(payload) {
 }
 
 //MODULE
-export function addModuleSet() {
+export function addModuleSet(payload) {
   return {
     type: "@courses/ADD_MODULE_SET",
+    payload,
   };
 }
 
