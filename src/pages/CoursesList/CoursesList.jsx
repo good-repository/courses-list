@@ -12,8 +12,8 @@ import { CourseCard } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCourseRequest,
-  editCourseRequest,
-  removeCourseRequest,
+  editCourseSet,
+  removeCourseSet,
 } from "../../store/slices/courses/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -78,12 +78,12 @@ export default function CoursesList() {
             : courseToEdit.enable,
         id: courseToEdit.id,
       };
-      dispatch(editCourseRequest(payload));
+      dispatch(editCourseSet(payload));
     }
   };
 
   const removeCourse = (id) => {
-    dispatch(removeCourseRequest(id));
+    dispatch(removeCourseSet(id));
   };
 
   const handleShowSidebar = (course) => {
@@ -136,7 +136,7 @@ export default function CoursesList() {
               name="image"
               setImage={(img) => formik.setFieldValue("image", img)}
             />
-            <div className="course-list-name-input">
+            <div className="course-list-inputs">
               <Input
                 label="Nome"
                 id="title"
