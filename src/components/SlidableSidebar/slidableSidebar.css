@@ -8,6 +8,7 @@
   right: 0;
   top: 0;
   width: 580px;
+  z-index: 1;
 }
 
 @keyframes animateRight {
@@ -53,7 +54,6 @@
   position: absolute;
   right: 10%;
   top: 40px;
-  z-index: 1;
 }
 
 .tooltip:hover .tooltip-text {
