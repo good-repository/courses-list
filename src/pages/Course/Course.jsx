@@ -65,8 +65,27 @@ export default function Course() {
     setShowSideBar(false);
   };
 
-  const addModule = () => {
-    dispatch(addModuleSet());
+  const addModule = async () => {
+    await formik.handleSubmit();
+    if (
+      formik.errors &&
+      Object.keys(formik.errors).length === 0 &&
+      Object.getPrototypeOf(formik.errors) === Object.prototype
+    ) {
+      const payload = {
+        courseId: course.id,
+        module: {
+          ...formik.values,
+          enable: true,
+          //check what is the last id, if have none, assumes 1
+          id: course?.modules?.length
+            ? course.modules[course.modules.length - 1].id + 1
+            : 1,
+          classes: [],
+        },
+      };
+      dispatch(addModuleSet(payload));
+    }
   };
   const editModule = () => {
     dispatch(editModuleSet());

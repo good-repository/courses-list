@@ -87,25 +87,28 @@ export default function user(state = INITIAL_STATE, action) {
 
       //MODULE
       case "@courses/ADD_MODULE_SET":
-        console.log(action.payload);
+        const arrayWithNewModule = draft.courses.map((course) => {
+          if (course.id === action.payload.courseId) {
+            var newModules = [...course.modules, action.payload.module];
+            course.modules = newModules;
+          }
+          return course;
+        });
+        draft.courses = arrayWithNewModule;
         break;
       case "@courses/EDIT_MODULE_SET":
         console.log(action.payload);
         break;
       case "@courses/REMOVE_MODULE_SET":
-        const { courseId, moduleId } = action.payload;
         const arrayWithRemovedModule = draft.courses.map((course) => {
-          if (course.id === courseId) {
+          if (course.id === action.payload.courseId) {
             var filteredModules = course.modules.filter(
-              (module) => module.id !== moduleId
+              (module) => module.id !== action.payload.moduleId
             );
-            var updatedCourse = { ...course, modules: filteredModules };
-
-            return updatedCourse;
+            course = { ...course, modules: filteredModules };
           }
           return course;
         });
-
         draft.courses = arrayWithRemovedModule;
         break;
 

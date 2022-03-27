@@ -11,7 +11,13 @@ export default function ModuleCard({
 }) {
   return (
     <div className="module-card">
-      <img src={module.image} alt="module logo" className="module-card-logo" />
+      {module.image && (
+        <img
+          src={module.image}
+          alt="module logo"
+          className="module-card-logo"
+        />
+      )}
       <div className="module-card-texts">
         <div className="module-card-header">
           <p className="module-card-title">
