@@ -1,9 +1,10 @@
 .courses-container {
   padding: 30px;
   display: flex;
+  flex-wrap: wrap-reverse;
 }
 
-.modules-container {
+.content-course-container {
   flex: 1;
   margin-right: 30px;
 }
@@ -48,6 +49,7 @@
   flex-direction: column;
   align-items: center;
   width: 317px;
+  margin-bottom: 40px;
 }
 
 .course-details-logo {
@@ -83,17 +85,12 @@
   margin-bottom: 5px;
 }
 
-.module-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-}
+@media screen and (max-width: 920px) {
+  .course-tabs button:first-of-type {
+    border-radius: 0;
+  }
 
-.modules-sidebar-uploader {
-  display: flex;
-  justify-content: center;
-}
-
-.module-sidebar-footer {
-  margin-top: 50px;
+  .course-tabs button:last-of-type {
+    border-radius: 0;
+  }
 }

@@ -1,0 +1,45 @@
+.module-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.modules-sidebar-uploader {
+  display: flex;
+  justify-content: center;
+}
+
+.module-sidebar-footer {
+  margin-top: 50px;
+}
+
+.course-details-sidebar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 33px;
+}
+
+.course-details-inputs {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.course-details-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.course-details-bottom-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+}
+
+.course-details-bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
