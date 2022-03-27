@@ -70,7 +70,7 @@ export default function CoursesList() {
       Object.keys(formik.errors).length === 0 &&
       Object.getPrototypeOf(formik.errors) === Object.prototype
     ) {
-      const payload = {
+      const updatedCourse = {
         ...formik.values,
         enable:
           typeof changeEnable === "boolean"
@@ -79,12 +79,21 @@ export default function CoursesList() {
         id: courseToEdit.id,
         modules: courseToEdit ? courseToEdit.modules : [],
       };
-      dispatch(editCourseSet(payload));
+      const newCoursesArray = courses.map((courseOnMap) => {
+        if (courseOnMap.id === updatedCourse.id) {
+          courseOnMap = updatedCourse;
+        }
+        return courseOnMap;
+      });
+
+      dispatch(editCourseSet(newCoursesArray));
     }
   };
 
   const removeCourse = (id) => {
-    dispatch(removeCourseSet(id));
+    const arrayWithRemovedCourse = courses.filter((course) => course.id !== id);
+
+    dispatch(removeCourseSet(arrayWithRemovedCourse));
   };
 
   const handleShowSidebar = (course) => {

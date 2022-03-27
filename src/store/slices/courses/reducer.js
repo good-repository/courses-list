@@ -73,16 +73,10 @@ export default function user(state = INITIAL_STATE, action) {
         draft.courses = [...draft.courses, action.payload.course];
         break;
       case "@courses/EDIT_COURSE_SET":
-        const updatedCourse = action.payload;
-        const newArray = [...draft.courses];
-        newArray[updatedCourse.id - 1] = updatedCourse;
-        draft.courses = newArray;
+        draft.courses = action.payload;
         break;
       case "@courses/REMOVE_COURSE_SET":
-        const arrayWithRemovedCourse = draft.courses.filter(
-          (course) => course.id !== action.payload
-        );
-        draft.courses = arrayWithRemovedCourse;
+        draft.courses = action.payload;
         break;
 
       //MODULE
