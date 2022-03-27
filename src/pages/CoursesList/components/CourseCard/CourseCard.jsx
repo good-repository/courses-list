@@ -2,8 +2,11 @@ import React from "react";
 import "./courseCard.css";
 import { IconButton, Label } from "../../../../components";
 import { Pencil, Trash } from "../../../../icons";
+import { useNavigate } from "react-router-dom";
 
 export default function CourseCard({ course, editCourse, removeCourse }) {
+  const navigate = useNavigate();
+
   if (!course) return <div />;
 
   return (
@@ -13,15 +16,30 @@ export default function CourseCard({ course, editCourse, removeCourse }) {
           src={course.image}
           alt="course logo"
           className="course-card-banner"
+          onClick={() => {
+            navigate(`/courses-list/${course.id}`);
+          }}
         />
       )}
-      {!course.image && <div className="course-card-no-image" />}
+      {!course.image && (
+        <div
+          className="course-card-no-image"
+          onClick={() => {
+            navigate(`/courses-list/${course.id}`);
+          }}
+        />
+      )}
       <div className="course-card-content">
-        <div>
+        <div
+          onClick={() => {
+            navigate(`/courses-list/${course.id}`);
+          }}
+          className="course-card-texts"
+        >
           <p className="course-card-title">{course.title}</p>
           <p className="course-card-subtitle">{course.description}</p>
         </div>
-        <div className="cours-card-cta">
+        <div className="course-card-cta">
           <Label color={course.enable ? "success" : "danger"}>
             {course.enable ? "HABILITADO" : "DESABILITADO"}
           </Label>
