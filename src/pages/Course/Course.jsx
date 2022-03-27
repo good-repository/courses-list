@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./course.css";
 import {
@@ -11,6 +11,12 @@ import {
   TextArea,
 } from "../../components";
 import { ModuleCard } from "./components";
+
+import {
+  addModuleSet,
+  editModuleSet,
+  removeModuleSet,
+} from "../../store/slices/courses/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -28,6 +34,7 @@ export default function Course() {
   const courses = useSelector((state) => state.courses.courses);
   const { id } = useParams();
   const course = courses.find((course) => course.id === Number(id));
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       image: "",
@@ -41,7 +48,6 @@ export default function Course() {
       handleHideSidebar();
     },
   });
-  console.log("🚀 ~ file: Course.jsx ~ line 12 ~ Course ~ course", course);
 
   const handleShowSidebar = (module) => {
     if (module?.title) {
@@ -57,6 +63,16 @@ export default function Course() {
     formik.resetForm();
     setModuleToEdit(null);
     setShowSideBar(false);
+  };
+
+  const addModule = () => {
+    dispatch(addModuleSet());
+  };
+  const editModule = () => {
+    dispatch(editModuleSet());
+  };
+  const removeModule = (moduleId) => {
+    dispatch(removeModuleSet({ courseId: course.id, moduleId }));
   };
 
   return (
@@ -93,6 +109,7 @@ export default function Course() {
                   index={index}
                   key={module.id}
                   editModule={handleShowSidebar}
+                  removeModule={removeModule}
                 />
               ))}
             </div>
@@ -130,7 +147,7 @@ export default function Course() {
                     <div className="module-sidebar-footer">
                       {!moduleToEdit && (
                         <div className="course-list-bottom-button">
-                          <Button color="success" onClick={() => {}}>
+                          <Button color="success" onClick={addModule}>
                             CRIAR
                           </Button>
                         </div>
@@ -139,11 +156,11 @@ export default function Course() {
                         <div className="course-list-bottom-buttons">
                           <Button
                             color={moduleToEdit.enable ? "danger" : "success"}
-                            onClick={() => {}}
+                            onClick={editModule}
                           >
                             {moduleToEdit.enable ? "DESABILITAR" : "HABILITAR"}
                           </Button>
-                          <Button color="success" onClick={() => {}}>
+                          <Button color="success" onClick={editModule}>
                             SALVAR
                           </Button>
                         </div>

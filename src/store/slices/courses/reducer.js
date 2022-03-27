@@ -68,6 +68,7 @@ const INITIAL_STATE = {
 export default function user(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
+      //COURSE
       case "@courses/ADD_COURSE_SUCCESS":
         draft.courses = [...draft.courses, action.payload.course];
         break;
@@ -82,6 +83,30 @@ export default function user(state = INITIAL_STATE, action) {
           (course) => course.id !== action.payload
         );
         draft.courses = arrayWithRemovedCourse;
+        break;
+
+      //MODULE
+      case "@courses/ADD_MODULE_SET":
+        console.log(action.payload);
+        break;
+      case "@courses/EDIT_MODULE_SET":
+        console.log(action.payload);
+        break;
+      case "@courses/REMOVE_MODULE_SET":
+        const { courseId, moduleId } = action.payload;
+        const arrayWithRemovedModule = draft.courses.map((course) => {
+          if (course.id === courseId) {
+            var filteredModules = course.modules.filter(
+              (module) => module.id !== moduleId
+            );
+            var updatedCourse = { ...course, modules: filteredModules };
+
+            return updatedCourse;
+          }
+          return course;
+        });
+
+        draft.courses = arrayWithRemovedModule;
         break;
 
       default:

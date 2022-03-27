@@ -3,7 +3,12 @@ import { IconButton, Label } from "../../../../components";
 import { Pencil, Trash } from "../../../../icons";
 import "./moduleCard.css";
 
-export default function ModuleCard({ module, index, editModule }) {
+export default function ModuleCard({
+  module,
+  index,
+  editModule,
+  removeModule,
+}) {
   return (
     <div className="module-card">
       <img src={module.image} alt="module logo" className="module-card-logo" />
@@ -27,7 +32,11 @@ export default function ModuleCard({ module, index, editModule }) {
         <Label color={module.enable ? "success" : "danger"}>
           {module.enable ? "HABILITADO" : "DESABILITADO"}
         </Label>
-        <IconButton icon={<Trash />} size="small" />
+        <IconButton
+          icon={<Trash />}
+          size="small"
+          onClick={() => removeModule(module.id)}
+        />
       </div>
     </div>
   );
