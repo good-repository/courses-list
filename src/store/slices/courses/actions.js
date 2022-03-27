@@ -1,3 +1,6 @@
+//the 3 first simulate a flow with necessity of asynchronism, but how i don't need it in this example, the others go direct to the reducer
+
+//COURSE
 export function addCourseRequest(payload) {
   return {
     type: "@courses/ADD_COURSE_REQUEST",
@@ -16,15 +19,35 @@ export function addCourseFailure() {
   };
 }
 
-export function editCourseRequest(payload) {
+export function editCourseSet(payload) {
   return {
     type: "@courses/EDIT_COURSE_SET",
     payload,
   };
 }
-export function removeCourseRequest(payload) {
+export function removeCourseSet(payload) {
   return {
     type: "@courses/REMOVE_COURSE_SET",
+    payload,
+  };
+}
+
+//MODULE
+export function addModuleSet() {
+  return {
+    type: "@courses/ADD_MODULE_SET",
+  };
+}
+
+export function editModuleSet(payload) {
+  return {
+    type: "@courses/EDIT_MODULE_SET",
+    payload,
+  };
+}
+export function removeModuleSet(payload) {
+  return {
+    type: "@courses/REMOVE_MODULE_SET",
     payload,
   };
 }
