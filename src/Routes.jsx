@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import Course from "./pages/Course/Course";
 import CoursesList from "./pages/CoursesList/CoursesList";
 export default function AppRoutes() {
   let navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<NoMatch />} />
+      <Route path="courses-list/:id" element={<Course />} />
       <Route path="courses-list" element={<CoursesList />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
