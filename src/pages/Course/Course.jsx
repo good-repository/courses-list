@@ -72,26 +72,72 @@ export default function Course() {
       Object.keys(formik.errors).length === 0 &&
       Object.getPrototypeOf(formik.errors) === Object.prototype
     ) {
-      const payload = {
-        courseId: course.id,
-        module: {
-          ...formik.values,
-          enable: true,
-          //check what is the last id, if have none, assumes 1
-          id: course?.modules?.length
-            ? course.modules[course.modules.length - 1].id + 1
-            : 1,
-          classes: [],
-        },
+      const newModule = {
+        ...formik.values,
+        enable: true,
+        //check what is the last id, if have none, assumes 1
+        id: course?.modules?.length
+          ? course.modules[course.modules.length - 1].id + 1
+          : 1,
+        classes: [],
       };
-      dispatch(addModuleSet(payload));
+
+      const arrayWithNewModule = courses.map((courseOnMap) => {
+        if (courseOnMap.id === course.id) {
+          const newModules = [...courseOnMap.modules, newModule];
+          return { ...courseOnMap, modules: newModules };
+        }
+        return courseOnMap;
+      });
+
+      dispatch(addModuleSet(arrayWithNewModule));
     }
   };
-  const editModule = () => {
-    dispatch(editModuleSet());
+  const editModule = async (changeEnable) => {
+    await formik.handleSubmit();
+    if (
+      formik.errors &&
+      Object.keys(formik.errors).length === 0 &&
+      Object.getPrototypeOf(formik.errors) === Object.prototype
+    ) {
+      const updatedModule = {
+        ...formik.values,
+        enable:
+          typeof changeEnable === "boolean"
+            ? !moduleToEdit.enable
+            : moduleToEdit.enable,
+        id: moduleToEdit.id,
+        classes: moduleToEdit.classes ? moduleToEdit.classes : [],
+      };
+
+      const arrayWithUpdatedModule = courses.map((courseOnMap) => {
+        if (courseOnMap.id === course.id) {
+          const updatedModules = courseOnMap.modules.map((module) => {
+            if (module.id === updatedModule.id) {
+              module = { ...updatedModule };
+            }
+            return module;
+          });
+          return (courseOnMap = { ...courseOnMap, modules: updatedModules });
+        }
+        return courseOnMap;
+      });
+
+      dispatch(editModuleSet(arrayWithUpdatedModule));
+    }
   };
   const removeModule = (moduleId) => {
-    dispatch(removeModuleSet({ courseId: course.id, moduleId }));
+    const arrayWithRemovedModule = courses.map((courseOnMap) => {
+      if (courseOnMap.id === course.id) {
+        var filteredModules = courseOnMap.modules.filter(
+          (module) => module.id !== moduleId
+        );
+        courseOnMap = { ...course, modules: filteredModules };
+      }
+      return courseOnMap;
+    });
+
+    dispatch(removeModuleSet(arrayWithRemovedModule));
   };
 
   return (
@@ -175,7 +221,7 @@ export default function Course() {
                         <div className="course-list-bottom-buttons">
                           <Button
                             color={moduleToEdit.enable ? "danger" : "success"}
-                            onClick={editModule}
+                            onClick={() => editModule(true)}
                           >
                             {moduleToEdit.enable ? "DESABILITAR" : "HABILITAR"}
                           </Button>
