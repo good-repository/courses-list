@@ -86,6 +86,10 @@
 }
 
 @media screen and (max-width: 920px) {
+  .course-tabs button {
+    width: 150px;
+  }
+
   .course-tabs button:first-of-type {
     border-radius: 0;
   }

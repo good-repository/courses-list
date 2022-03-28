@@ -4,7 +4,7 @@
 
 .accordion-button {
   background-color: var(--whiteSmoke);
-  height: 50px;
+  min-height: 50px;
   width: 100%;
   border: none;
   border-radius: 10px;
@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 0 20px;
   cursor: pointer;
 }
 
@@ -28,10 +28,19 @@
   line-height: 24.51px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .accordion-title div {
   color: white;
+}
+
+.accordion-title span {
+  padding-bottom: 30px;
+}
+
+.accordion-title p {
+  margin: 0;
 }
 
 .open-accordion {
@@ -53,4 +62,15 @@
 
 .chevron-down {
   transform: rotate(180deg);
+}
+
+.chevron-up,
+.chevron-down {
+  margin-bottom: 3px;
+}
+
+@media screen and (max-width: 450px) {
+  .accordion-title div {
+    margin-bottom: 10px;
+  }
 }

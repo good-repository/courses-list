@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 41px;
+  min-height: 41px;
   font-size: 18px;
   font-weight: 400;
   line-height: 24.51px;
@@ -26,10 +26,11 @@
 }
 
 .lessons-accordion-content-text {
-  flex: 1;
+  flex: 2;
   display: flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .lessons-accordion-content-text p {
@@ -43,4 +44,15 @@
   align-items: center;
   justify-content: flex-end;
   gap: 14px;
+}
+
+@media screen and (max-width: 600px) {
+  .lessons-accordion-section-content {
+    flex-direction: column;
+  }
+
+  .lessons-accordion-content-actions {
+    width: 100%;
+    justify-content: space-around;
+  }
 }

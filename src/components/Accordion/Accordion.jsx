@@ -15,7 +15,7 @@ export default function Accordion({ title, label, children }) {
           <p>{title}</p>
           {label}
         </div>
-        <div className={show ? "" : "chevron-down"}>
+        <div className={`chevron${show ? "-up" : "-down"}`}>
           <ChevronDoubleUp />
         </div>
       </button>
