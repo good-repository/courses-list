@@ -22,8 +22,9 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Modules({
-  courses,
-  course,
+  modules,
+  courseId,
+  courseModules,
   showSideBar,
   setShowSideBar,
 }) {
@@ -70,21 +71,13 @@ export default function Modules({
         ...formik.values,
         enable: true,
         //check what is the last id, if have none, assumes 1
-        id: course?.modules?.length
-          ? course.modules[course.modules.length - 1].id + 1
-          : 1,
-        classes: [],
+        id: modules?.length ? modules[modules.length - 1].id + 1 : 1,
+        courseId: Number(courseId),
+        classes: 0,
       };
 
-      const arrayWithNewModule = courses.map((courseOnMap) => {
-        if (courseOnMap.id === course.id) {
-          const newModules = [...courseOnMap.modules, newModule];
-          return { ...courseOnMap, modules: newModules };
-        }
-        return courseOnMap;
-      });
-
-      dispatch(addModuleSet(arrayWithNewModule));
+      const newModules = [...modules, newModule];
+      dispatch(addModuleSet(newModules));
     }
   };
   const editModule = async (changeEnable) => {
@@ -101,43 +94,29 @@ export default function Modules({
             ? !moduleToEdit.enable
             : moduleToEdit.enable,
         id: moduleToEdit.id,
-        classes: moduleToEdit.classes ? moduleToEdit.classes : [],
+        classes: moduleToEdit.classes,
+        courseId: moduleToEdit.courseId,
       };
 
-      const arrayWithUpdatedModule = courses.map((courseOnMap) => {
-        if (courseOnMap.id === course.id) {
-          const updatedModules = courseOnMap.modules.map((module) => {
-            if (module.id === updatedModule.id) {
-              module = { ...updatedModule };
-            }
-            return module;
-          });
-          return (courseOnMap = { ...courseOnMap, modules: updatedModules });
+      const updatedModules = modules.map((module) => {
+        if (module.id === updatedModule.id) {
+          module = { ...updatedModule };
         }
-        return courseOnMap;
+        return module;
       });
 
-      dispatch(editModuleSet(arrayWithUpdatedModule));
+      dispatch(editModuleSet(updatedModules));
     }
   };
   const removeModule = (moduleId) => {
-    const arrayWithRemovedModule = courses.map((courseOnMap) => {
-      if (courseOnMap.id === course.id) {
-        var filteredModules = courseOnMap.modules.filter(
-          (module) => module.id !== moduleId
-        );
-        courseOnMap = { ...course, modules: filteredModules };
-      }
-      return courseOnMap;
-    });
-
-    dispatch(removeModuleSet(arrayWithRemovedModule));
+    var filteredModules = modules.filter((module) => module.id !== moduleId);
+    dispatch(removeModuleSet(filteredModules));
   };
 
   return (
     <>
       <div className="module-cards">
-        {course?.modules?.map((module, index) => (
+        {courseModules?.map((module, index) => (
           <ModuleCard
             module={module}
             index={index}

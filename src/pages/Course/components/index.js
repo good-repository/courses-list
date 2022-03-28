@@ -1,5 +1,5 @@
 import ModuleCard from "./ModuleCard/ModuleCard";
 import Modules from "./Modules/Modules";
-import Classes from "./Classes/Classes";
+import Lessons from "./Lessons/Lessons";
 
-export { ModuleCard, Modules, Classes };
+export { ModuleCard, Modules, Lessons };

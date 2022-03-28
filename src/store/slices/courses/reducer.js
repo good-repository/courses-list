@@ -35,7 +35,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Introdução",
       description: "Introdução ao Svelte",
-
+      classes: 10,
       enable: true,
     },
     {
@@ -44,6 +44,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Programação funcional",
       description: "Biblioteca Ramda e conceito.",
+      classes: 8,
       enable: true,
     },
     {
@@ -52,6 +53,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Rx.JS",
       description: "Aprendendo sobre Rx.JS",
+      classes: 8,
       enable: false,
     },
     {
@@ -60,6 +62,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Finalização",
       description: "Finalizando o WebApp",
+      classes: 5,
       enable: true,
     },
   ],

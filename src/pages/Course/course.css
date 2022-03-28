@@ -10,7 +10,7 @@
 }
 
 .course-tabs {
-  border-bottom: 1px solid var(--summersky);
+  border-bottom: 2px solid var(--summersky);
 }
 
 .course-tabs button {

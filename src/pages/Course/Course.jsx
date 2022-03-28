@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./course.css";
 import { Button, Label } from "../../components";
-import { Classes, Modules } from "./components";
+import { Lessons, Modules } from "./components";
 
 const MODULES = "modules";
-const CLASSES = "classes";
+const LESSONS = "lessons";
 
 export default function Course() {
   const [activeTab, setActiveTab] = useState(MODULES);
   const [showSideBar, setShowSideBar] = useState(false);
+  const modules = useSelector((state) => state.courses.modules);
   const courses = useSelector((state) => state.courses.courses);
+  const lessons = useSelector((state) => state.courses.lessons);
   const { id } = useParams();
+  const courseModules = modules.filter(
+    (module) => module.courseId === Number(id)
+  );
   const course = courses.find((course) => course.id === Number(id));
+
+  useEffect(() => {
+    setShowSideBar(false);
+  }, [activeTab]);
 
   return (
     <div className="courses-container">
@@ -31,29 +40,36 @@ export default function Course() {
           </button>
           <button
             className={`${
-              activeTab === CLASSES
+              activeTab === LESSONS
                 ? "course-active-tab"
                 : "course-inactive-tab"
             }`}
-            onClick={() => setActiveTab(CLASSES)}
+            onClick={() => setActiveTab(LESSONS)}
           >
             Aulas
           </button>
         </div>
         {activeTab === MODULES && (
           <Modules
-            courses={courses}
-            course={course}
+            courseId={id}
+            modules={modules}
+            courseModules={courseModules}
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
           />
         )}
-
-        {activeTab === CLASSES && <Classes course={course} />}
+        {activeTab === LESSONS && (
+          <Lessons
+            lessons={lessons}
+            modules={modules}
+            showSideBar={showSideBar}
+            setShowSideBar={setShowSideBar}
+          />
+        )}
       </div>
       <div className="course-details">
         <Button size="large" onClick={() => setShowSideBar(true)}>
-          NOVO MÓDULO
+          {activeTab === MODULES ? "NOVO MÓDULO" : "NOVA AULA"}
         </Button>
         <img
           src={course.image}
