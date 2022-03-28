@@ -1,3 +1,4 @@
+import Accordion from "./Accordion/Accordion";
 import Breadcrumb from "./Breadcrumb/Breadcrumb";
 import Button from "./Button/Button";
 import DateInput from "./DateInput/DateInput";
@@ -11,6 +12,7 @@ import SlidableSidebar from "./SlidableSidebar/SlidableSidebar";
 import TextArea from "./TextArea/TextArea";
 
 export {
+  Accordion,
   Breadcrumb,
   Button,
   DateInput,
