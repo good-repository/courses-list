@@ -49,7 +49,7 @@ export default function Course() {
           />
         )}
 
-        {activeTab === CLASSES && <Classes />}
+        {activeTab === CLASSES && <Classes course={course} />}
       </div>
       <div className="course-details">
         <Button size="large" onClick={() => setShowSideBar(true)}>
