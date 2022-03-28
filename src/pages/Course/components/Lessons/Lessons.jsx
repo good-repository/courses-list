@@ -60,11 +60,15 @@ export default function Lessons({
         <Accordion
           title={`${index + 1}. ${module.title}`}
           label={!module.enable && <Label color={"danger"}>DESABILITADO</Label>}
+          key={module.id}
         >
           <div className="lessons-accordion-content animated-accordion">
             {lessons.length ? (
               lessons.map((lesson, index) => (
-                <section className="lessons-accordion-section-content">
+                <section
+                  className="lessons-accordion-section-content"
+                  key={lesson.id}
+                >
                   <div className="lessons-accordion-content-text">
                     <IconButton
                       icon={<Book size={20} color={"#333333"} />}

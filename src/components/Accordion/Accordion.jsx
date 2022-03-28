@@ -11,10 +11,10 @@ export default function Accordion({ title, label, children }) {
         className={`accordion-button ${show ? "open-accordion" : ""}`}
         onClick={() => setShow(!show)}
       >
-        <p className="accordion-title">
-          {title}
+        <div className="accordion-title">
+          <p>{title}</p>
           {label}
-        </p>
+        </div>
         <div className={show ? "" : "chevron-down"}>
           <ChevronDoubleUp />
         </div>
