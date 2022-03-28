@@ -15,45 +15,6 @@ const INITIAL_STATE = {
       workload: "20h",
       courseActivation: "",
       courseDeactivation: "",
-      modules: [
-        {
-          id: 1,
-          image: svelte,
-          title: "Introdução",
-          description: "Introdução ao Svelte",
-          classes: [
-            { title: "Primeira aula", content: "" },
-            { title: "Segunda aula", content: "" },
-            { title: "Terceira aula", content: "" },
-            { title: "Quarta aula", content: "" },
-          ],
-          enable: true,
-        },
-        {
-          id: 2,
-          image: svelte,
-          title: "Programação funcional",
-          description: "Biblioteca Ramda e conceito.",
-          classes: [],
-          enable: true,
-        },
-        {
-          id: 3,
-          image: svelte,
-          title: "Rx.JS",
-          description: "Aprendendo sobre Rx.JS",
-          classes: [],
-          enable: false,
-        },
-        {
-          id: 4,
-          image: svelte,
-          title: "Finalização",
-          description: "Finalizando o WebApp",
-          classes: [],
-          enable: true,
-        },
-      ],
     },
     {
       id: 2,
@@ -65,8 +26,48 @@ const INITIAL_STATE = {
       workload: "10h",
       courseActivation: "",
       courseDeactivation: "",
-      modules: [],
     },
+  ],
+  modules: [
+    {
+      id: 1,
+      courseId: 1,
+      image: svelte,
+      title: "Introdução",
+      description: "Introdução ao Svelte",
+
+      enable: true,
+    },
+    {
+      id: 2,
+      courseId: 1,
+      image: svelte,
+      title: "Programação funcional",
+      description: "Biblioteca Ramda e conceito.",
+      enable: true,
+    },
+    {
+      id: 3,
+      courseId: 1,
+      image: svelte,
+      title: "Rx.JS",
+      description: "Aprendendo sobre Rx.JS",
+      enable: false,
+    },
+    {
+      id: 4,
+      courseId: 1,
+      image: svelte,
+      title: "Finalização",
+      description: "Finalizando o WebApp",
+      enable: true,
+    },
+  ],
+  lessons: [
+    { id: 1, moduleId: 1, title: "Primeira aula", content: "" },
+    { id: 2, moduleId: 1, title: "Segunda aula", content: "" },
+    { id: 3, moduleId: 1, title: "Terceira aula", content: "" },
+    { id: 4, moduleId: 1, title: "Quarta aula", content: "" },
   ],
 };
 
@@ -86,13 +87,24 @@ export default function user(state = INITIAL_STATE, action) {
 
       //MODULE
       case "@courses/ADD_MODULE_SET":
-        draft.courses = action.payload;
+        draft.modules = action.payload;
         break;
       case "@courses/EDIT_MODULE_SET":
-        draft.courses = action.payload;
+        draft.modules = action.payload;
         break;
       case "@courses/REMOVE_MODULE_SET":
-        draft.courses = action.payload;
+        draft.modules = action.payload;
+        break;
+
+      //CLASSES
+      case "@courses/ADD_CLASS_SET":
+        draft.classes = action.payload;
+        break;
+      case "@courses/EDIT_CLASS_SET":
+        draft.classes = action.payload;
+        break;
+      case "@courses/REMOVE_CLASS_SET":
+        draft.classes = action.payload;
         break;
 
       default:

@@ -18,7 +18,6 @@ export function addCourseFailure() {
     type: "@courses/ADD_COURSE_FAILURE",
   };
 }
-
 export function editCourseSet(payload) {
   return {
     type: "@courses/EDIT_COURSE_SET",
@@ -39,7 +38,6 @@ export function addModuleSet(payload) {
     payload,
   };
 }
-
 export function editModuleSet(payload) {
   return {
     type: "@courses/EDIT_MODULE_SET",
@@ -49,6 +47,26 @@ export function editModuleSet(payload) {
 export function removeModuleSet(payload) {
   return {
     type: "@courses/REMOVE_MODULE_SET",
+    payload,
+  };
+}
+
+//CLASSES
+export function addClassSet(payload) {
+  return {
+    type: "@courses/ADD_CLASS_SET",
+    payload,
+  };
+}
+export function editClassSet(payload) {
+  return {
+    type: "@courses/EDIT_CLASS_SET",
+    payload,
+  };
+}
+export function removeClassSet(payload) {
+  return {
+    type: "@courses/REMOVE_CLASS_SET",
     payload,
   };
 }
