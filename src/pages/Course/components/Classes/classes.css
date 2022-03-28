@@ -1,0 +1,42 @@
+.classes-accordion-content {
+  color: black;
+  margin-bottom: 10px;
+}
+
+.classes-accordion-content section {
+  background-color: var(--tutu);
+}
+.classes-accordion-content section:nth-child(even) {
+  background-color: var(--beige);
+}
+
+.classes-accordion-section-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 41px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24.51px;
+  padding: 0 15px;
+}
+
+.classes-accordion-content-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.classes-accordion-content-text p {
+  margin: 0;
+  margin-top: -5px;
+}
+
+.classes-accordion-content-actions {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}

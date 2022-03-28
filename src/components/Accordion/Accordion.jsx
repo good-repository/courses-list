@@ -19,7 +19,7 @@ export default function Accordion({ title, label, children }) {
           <ChevronDoubleUp />
         </div>
       </button>
-      {show && <div className="accordion-content animated">{children}</div>}
+      {show && children}
     </div>
   );
 }

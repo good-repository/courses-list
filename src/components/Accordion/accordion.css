@@ -36,7 +36,8 @@
   border-radius: 10px 10px 0px 0px;
   margin-bottom: 0;
 }
-.animated {
+
+.animated-accordion {
   animation: opac 0.8s;
 }
 @keyframes opac {
@@ -50,47 +51,4 @@
 
 .chevron-down {
   transform: rotate(180deg);
-}
-
-.accordion-content {
-  color: black;
-  margin-bottom: 10px;
-}
-
-.accordion-content section {
-  background-color: var(--tutu);
-}
-.accordion-content section:nth-child(even) {
-  background-color: var(--beige);
-}
-
-.accordion-content-class {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 41px;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24.51px;
-  padding: 0 15px;
-}
-
-.accordion-content-class-text {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.accordion-content-class-text p {
-  margin: 0;
-  margin-top: -5px;
-}
-
-.accordion-content-class-actions {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
 }
