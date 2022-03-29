@@ -51,22 +51,22 @@ export function removeModuleSet(payload) {
   };
 }
 
-//CLASSES
-export function addClassSet(payload) {
+//LESSONS
+export function addLessonSet(payload) {
   return {
-    type: "@courses/ADD_CLASS_SET",
+    type: "@courses/ADD_LESSON_SET",
     payload,
   };
 }
-export function editClassSet(payload) {
+export function editLessonSet(payload) {
   return {
-    type: "@courses/EDIT_CLASS_SET",
+    type: "@courses/EDIT_LESSON_SET",
     payload,
   };
 }
-export function removeClassSet(payload) {
+export function removeLessonSet(payload) {
   return {
-    type: "@courses/REMOVE_CLASS_SET",
+    type: "@courses/REMOVE_LESSON_SET",
     payload,
   };
 }

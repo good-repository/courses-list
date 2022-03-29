@@ -73,7 +73,7 @@ export default function Modules({
         //check what is the last id, if have none, assumes 1
         id: modules?.length ? modules[modules.length - 1].id + 1 : 1,
         courseId: Number(courseId),
-        classes: 0,
+        lessons: 0,
       };
 
       const newModules = [...modules, newModule];
@@ -94,7 +94,7 @@ export default function Modules({
             ? !moduleToEdit.enable
             : moduleToEdit.enable,
         id: moduleToEdit.id,
-        classes: moduleToEdit.classes,
+        lessons: moduleToEdit.lessons,
         courseId: moduleToEdit.courseId,
       };
 

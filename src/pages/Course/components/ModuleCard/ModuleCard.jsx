@@ -30,8 +30,8 @@ export default function ModuleCard({
           />
         </div>
         <p className="module-card-description">{module.description}</p>
-        <p className="module-card-classes">
-          <strong>Aulas:</strong> {module.classes}
+        <p className="module-card-lessons">
+          <strong>Aulas:</strong> {module.lessons}
         </p>
       </div>
       <div className="module-card-footer">

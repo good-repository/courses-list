@@ -35,7 +35,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Introdução",
       description: "Introdução ao Svelte",
-      classes: 10,
+      lessons: 10,
       enable: true,
     },
     {
@@ -44,7 +44,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Programação funcional",
       description: "Biblioteca Ramda e conceito.",
-      classes: 8,
+      lessons: 8,
       enable: true,
     },
     {
@@ -53,7 +53,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Rx.JS",
       description: "Aprendendo sobre Rx.JS",
-      classes: 8,
+      lessons: 8,
       enable: false,
     },
     {
@@ -62,7 +62,7 @@ const INITIAL_STATE = {
       image: svelte,
       title: "Finalização",
       description: "Finalizando o WebApp",
-      classes: 5,
+      lessons: 5,
       enable: true,
     },
   ],
@@ -99,15 +99,15 @@ export default function user(state = INITIAL_STATE, action) {
         draft.modules = action.payload;
         break;
 
-      //CLASSES
-      case "@courses/ADD_CLASS_SET":
-        draft.classes = action.payload;
+      //LESSONS
+      case "@courses/ADD_LESSON_SET":
+        draft.lessons = action.payload;
         break;
-      case "@courses/EDIT_CLASS_SET":
-        draft.classes = action.payload;
+      case "@courses/EDIT_LESSON_SET":
+        draft.lessons = action.payload;
         break;
-      case "@courses/REMOVE_CLASS_SET":
-        draft.classes = action.payload;
+      case "@courses/REMOVE_LESSON_SET":
+        draft.lessons = action.payload;
         break;
 
       default:
