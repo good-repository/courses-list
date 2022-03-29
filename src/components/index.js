@@ -7,6 +7,7 @@ import IconButton from "./IconButton/IconButton";
 import ImageUploader from "./ImageUploader/ImageUploader";
 import Input from "./Input/Input";
 import Label from "./Label/Label";
+import Select from "./Select/Select";
 import Sidebar from "./Sidebar/Sidebar";
 import SlidableSidebar from "./SlidableSidebar/SlidableSidebar";
 import TextArea from "./TextArea/TextArea";
@@ -21,6 +22,7 @@ export {
   ImageUploader,
   Input,
   Label,
+  Select,
   Sidebar,
   SlidableSidebar,
   TextArea,
