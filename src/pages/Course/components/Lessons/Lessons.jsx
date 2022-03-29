@@ -36,7 +36,7 @@ export default function Lessons({
   const formik = useFormik({
     initialValues: {
       id: "",
-      module: "",
+      module: modules[0]?.id,
       title: "",
       description: "",
     },
