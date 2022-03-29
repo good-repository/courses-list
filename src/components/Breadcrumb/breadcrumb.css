@@ -22,3 +22,21 @@
 .breadcrumb img {
   height: 12px;
 }
+
+.breadcrumb-link {
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.breadcrumb-link {
+  animation: opac 0.3s;
+}
+@keyframes opac {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
