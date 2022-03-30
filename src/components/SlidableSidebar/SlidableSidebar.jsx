@@ -10,13 +10,13 @@ export default function SlidableSidebar({
   children,
 }) {
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useHandleClick(wrapperRef);
 
   function closeSideBar() {
     handleClose();
   }
 
-  function useOutsideAlerter(ref) {
+  function useHandleClick(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {

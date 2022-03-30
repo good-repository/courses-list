@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Book, House, List } from "../../icons";
 import IconButton from "../IconButton/IconButton";
@@ -8,8 +8,25 @@ export default function Sidebar() {
   const [expanded, setExpanded] = useState(true);
   const location = useLocation();
 
+  const wrapperRef = useRef(null);
+  useHandleClick(wrapperRef);
+
+  function useHandleClick(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setExpanded(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
   return (
-    <nav className={`sidebar ${expanded ? "expanded" : ""}`}>
+    <nav className={`sidebar ${expanded ? "expanded" : ""}`} ref={wrapperRef}>
       <div className="menu">
         <div className="menu-icon">
           <IconButton

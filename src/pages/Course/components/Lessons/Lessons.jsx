@@ -197,7 +197,7 @@ export default function Lessons({
         open={showSideBar}
         handleClose={handleHideSidebar}
         title="NOVO MÓDULO"
-        tooltipText="Você está prestes a criar um novo módulo, é dentro dele que suas aulas ficarão, pense que é como um tópico de agrupamento!"
+        tooltipText="Você está prestes a criar uma nova aula, coloque palavras chave!"
       >
         <div className="course-details-sidebar">
           <form className="course-details-form">

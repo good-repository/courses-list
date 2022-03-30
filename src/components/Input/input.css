@@ -5,8 +5,8 @@
 
 .input input {
   border: none;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   font-family: Open Sans;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -26,13 +26,13 @@
   margin-bottom: 6px;
 }
 
+.input-label-error {
+  color: var(--amaranth);
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
 .input .input-error {
   border: 2px solid var(--amaranth);
   margin-bottom: 0;
-}
-
-.input-label-error {
-  margin-top: 5px;
-  margin-bottom: 30px;
-  color: var(--amaranth);
 }

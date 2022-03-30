@@ -32,6 +32,7 @@
 .breadcrumb-link {
   animation: opac 0.3s;
 }
+
 @keyframes opac {
   from {
     opacity: 0;

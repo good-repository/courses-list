@@ -12,7 +12,7 @@ export default function ImageUploader({ image, setImage, name }) {
 
   return (
     <>
-      <label htmlFor="courseImage" className="img-uploader">
+      <label htmlFor="imageUploader" className="img-uploader-wrapper">
         {!image && (
           <>
             <Camera />
@@ -22,8 +22,8 @@ export default function ImageUploader({ image, setImage, name }) {
         {image && (
           <img
             src={image}
-            alt="imagem do curso"
-            className="course-image-uploader"
+            alt="imagem"
+            className="img-uploader"
             width="170"
             height="100"
           />
@@ -31,7 +31,7 @@ export default function ImageUploader({ image, setImage, name }) {
       </label>
       <input
         type="file"
-        id="courseImage"
+        id="imageUploader"
         accept="image/*"
         style={{ display: "none" }}
         onChange={handleImageChange}

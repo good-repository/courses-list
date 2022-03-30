@@ -1,4 +1,9 @@
 .img-uploader {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.img-uploader-wrapper {
   align-items: center;
   background-color: white;
   background-image: url("../../assets/dashed-border.svg");
@@ -17,9 +22,4 @@
   font-size: 12px;
   font-weight: 400px;
   line-height: 16.34px;
-}
-
-.course-image-uploader {
-  border-radius: 10px;
-  object-fit: cover;
 }
