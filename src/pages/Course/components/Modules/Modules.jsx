@@ -35,11 +35,11 @@ export default function Modules({
       image: "",
       title: "",
       description: "",
+      enable: true,
     },
     validationSchema,
     validateOnChange: false,
     validateOnBlur: false,
-    enable: true,
     onSubmit: () => {
       handleHideSidebar();
       !moduleToEdit ? addModule() : editModule();
@@ -51,6 +51,7 @@ export default function Modules({
       formik.setFieldValue("image", module.image);
       formik.setFieldValue("title", module.title);
       formik.setFieldValue("description", module.description);
+      formik.setFieldValue("enable", module.enable);
       setModuleToEdit(module);
     }
     setShowSideBar(true);

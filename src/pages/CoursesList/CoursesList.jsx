@@ -91,6 +91,7 @@ export default function CoursesList() {
       formik.setFieldValue("workload", course.workload);
       formik.setFieldValue("courseActivation", course.courseActivation);
       formik.setFieldValue("courseDeactivation", course.courseDeactivation);
+      formik.setFieldValue("enable", course.enable);
       setCourseToEdit(course);
     }
 

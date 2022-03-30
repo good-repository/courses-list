@@ -12,6 +12,9 @@
   font-weight: 300;
   line-height: 19.07px;
   margin-top: -13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .module-card-footer {
@@ -66,4 +69,7 @@
   font-weight: 600;
   line-height: 24.51px;
   margin-top: -5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
