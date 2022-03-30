@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/courses-list/static/css/main.8c0618ed.css",
+    "main.js": "/courses-list/static/js/main.9ce5cc31.js",
+    "static/media/guilherme.jpg": "/courses-list/static/media/guilherme.ebce158745c353d53243.jpg",
+    "static/media/react-banner.svg": "/courses-list/static/media/react-banner.422527a933bcd5bd14cbc752df4421c4.svg",
+    "static/media/svelte-banner.svg": "/courses-list/static/media/svelte-banner.a2aafebfd87193a091b214864caf4aea.svg",
+    "static/media/dashed-border.svg": "/courses-list/static/media/dashed-border.80d1aae41399d02bf020.svg",
+    "index.html": "/courses-list/index.html",
+    "main.8c0618ed.css.map": "/courses-list/static/css/main.8c0618ed.css.map",
+    "main.9ce5cc31.js.map": "/courses-list/static/js/main.9ce5cc31.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c0618ed.css",
+    "static/js/main.9ce5cc31.js"
+  ]
+}
