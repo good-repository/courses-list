@@ -1,2 +1,2 @@
 # courses-list
- a sample of a course list with some of actions (frontend only)
+para rodar o projeto: clonar e entrar na raiz do projeto, após isso digitar "yarn" para aguardar todos os módulos serem instalados, feito isso digitar "yarn start" para efetivamente iniciar, irá abrir uma guia do chrome :)
