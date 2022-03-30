@@ -61,7 +61,7 @@ export default function Course() {
         {activeTab === LESSONS && (
           <Lessons
             lessons={lessons}
-            modules={modules}
+            modules={courseModules}
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
           />
