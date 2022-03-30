@@ -39,8 +39,10 @@ export default function Modules({
     validationSchema,
     validateOnChange: false,
     validateOnBlur: false,
+    enable: true,
     onSubmit: () => {
       handleHideSidebar();
+      !moduleToEdit ? addModule() : editModule();
     },
   });
 
@@ -60,57 +62,45 @@ export default function Modules({
     setShowSideBar(false);
   };
 
-  const addModule = async () => {
-    await formik.handleSubmit();
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const newModule = {
-        ...formik.values,
-        enable: true,
-        //check what is the last id, if have none, assumes 1
-        id: modules?.length ? modules[modules.length - 1].id + 1 : 1,
-        courseId: Number(courseId),
-        lessons: 0,
-      };
+  const addModule = () => {
+    const newModule = {
+      ...formik.values,
+      //check what is the last id, if have none, assumes 1
+      id: modules?.length ? modules[modules.length - 1].id + 1 : 1,
+      courseId: Number(courseId),
+      lessons: 0,
+    };
 
-      const newModules = [...modules, newModule];
-      dispatch(addModuleSet(newModules));
-    }
+    const newModules = [...modules, newModule];
+    dispatch(addModuleSet(newModules));
   };
-  const editModule = async (changeEnable) => {
-    await formik.handleSubmit();
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const updatedModule = {
-        ...formik.values,
-        enable:
-          typeof changeEnable === "boolean"
-            ? !moduleToEdit.enable
-            : moduleToEdit.enable,
-        id: moduleToEdit.id,
-        lessons: moduleToEdit.lessons,
-        courseId: moduleToEdit.courseId,
-      };
 
-      const updatedModules = modules.map((module) => {
-        if (module.id === updatedModule.id) {
-          module = { ...updatedModule };
-        }
-        return module;
-      });
+  const editModule = () => {
+    const updatedModule = {
+      ...formik.values,
+      id: moduleToEdit.id,
+      lessons: moduleToEdit.lessons,
+      courseId: moduleToEdit.courseId,
+    };
 
-      dispatch(editModuleSet(updatedModules));
-    }
+    const updatedModules = modules.map((module) => {
+      if (module.id === updatedModule.id) {
+        module = { ...updatedModule };
+      }
+      return module;
+    });
+
+    dispatch(editModuleSet(updatedModules));
   };
+
   const removeModule = (moduleId) => {
     var filteredModules = modules.filter((module) => module.id !== moduleId);
     dispatch(removeModuleSet(filteredModules));
+  };
+
+  const handleChangeEnable = () => {
+    formik.setFieldValue("enable", !moduleToEdit.enable);
+    formik.handleSubmit();
   };
 
   return (
@@ -160,7 +150,7 @@ export default function Modules({
               <div className="module-sidebar-footer">
                 {!moduleToEdit && (
                   <div className="course-details-bottom-button">
-                    <Button color="success" onClick={addModule}>
+                    <Button color="success" onClick={formik.handleSubmit}>
                       CRIAR
                     </Button>
                   </div>
@@ -169,11 +159,11 @@ export default function Modules({
                   <div className="course-details-bottom-buttons">
                     <Button
                       color={moduleToEdit.enable ? "danger" : "success"}
-                      onClick={() => editModule(true)}
+                      onClick={handleChangeEnable}
                     >
                       {moduleToEdit.enable ? "DESABILITAR" : "HABILITAR"}
                     </Button>
-                    <Button color="success" onClick={editModule}>
+                    <Button color="success" onClick={formik.handleSubmit}>
                       SALVAR
                     </Button>
                   </div>

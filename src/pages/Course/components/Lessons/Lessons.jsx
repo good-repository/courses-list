@@ -22,6 +22,7 @@ import {
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Campo obrigatório"),
+  module: Yup.string().required("Campo obrigatório"),
 });
 
 export default function Lessons({
@@ -45,6 +46,7 @@ export default function Lessons({
     validateOnBlur: false,
     onSubmit: () => {
       handleHideSidebar();
+      !lessonToEdit ? addLesson() : editLesson();
     },
   });
 
@@ -67,7 +69,7 @@ export default function Lessons({
 
   const handleShowSidebar = (lesson) => {
     if (lesson?.title) {
-      formik.setFieldValue("module", lesson.module);
+      formik.setFieldValue("module", lesson.moduleId);
       formik.setFieldValue("title", lesson.title);
       formik.setFieldValue("description", lesson.description);
       setLessonToEdit(lesson);
@@ -81,52 +83,38 @@ export default function Lessons({
     setShowSideBar(false);
   };
 
-  const addLesson = async () => {
-    await formik.handleSubmit();
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const newLesson = {
-        title: formik.values.title,
-        description: formik.values.description,
-        moduleId: Number(formik.values.module),
-        //check what is the last id, if have none, assumes 1
-        id: lessons?.length ? lessons[lessons.length - 1].id + 1 : 1,
-      };
+  const addLesson = () => {
+    const newLesson = {
+      title: formik.values.title,
+      description: formik.values.description,
+      moduleId: Number(formik.values.module),
+      //check what is the last id, if have none, assumes 1
+      id: lessons?.length ? lessons[lessons.length - 1].id + 1 : 1,
+    };
 
-      const newLessons = [...lessons, newLesson];
-      dispatch(addLessonSet(newLessons));
-    }
+    const newLessons = [...lessons, newLesson];
+    dispatch(addLessonSet(newLessons));
   };
-  const editLesson = async (changeEnable) => {
-    await formik.handleSubmit();
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const updatedLesson = {
-        ...formik.values,
-        enable:
-          typeof changeEnable === "boolean"
-            ? !lessonToEdit.enable
-            : lessonToEdit.enable,
-        id: lessonToEdit.id,
-        classes: lessonToEdit.classes,
-        moduleId: lessonToEdit.moduleId,
-      };
+  const editLesson = () => {
+    const updatedLesson = {
+      ...formik.values,
+      enable:
+        typeof changeEnable === "boolean"
+          ? !lessonToEdit.enable
+          : lessonToEdit.enable,
+      id: lessonToEdit.id,
+      classes: lessonToEdit.classes,
+      moduleId: Number(formik.values.module),
+    };
 
-      const updatedLessons = lessons.map((lesson) => {
-        if (lesson.id === updatedLesson.id) {
-          lesson = { ...updatedLesson };
-        }
-        return lesson;
-      });
+    const updatedLessons = lessons.map((lesson) => {
+      if (lesson.id === updatedLesson.id) {
+        lesson = { ...updatedLesson };
+      }
+      return lesson;
+    });
 
-      dispatch(editLessonSet(updatedLessons));
-    }
+    dispatch(editLessonSet(updatedLessons));
   };
   const removeLesson = (lessonId) => {
     var filteredLessons = lessons.filter((lesson) => lesson.id !== lessonId);
@@ -230,7 +218,7 @@ export default function Lessons({
               <div className="module-sidebar-footer">
                 {!lessonToEdit && (
                   <div className="course-details-bottom-button">
-                    <Button color="success" onClick={addLesson}>
+                    <Button color="success" onClick={formik.handleSubmit}>
                       CRIAR
                     </Button>
                   </div>
@@ -240,7 +228,7 @@ export default function Lessons({
                     <Button color="danger" onClick={handleClickRemove}>
                       DELETAR
                     </Button>
-                    <Button color="success" onClick={editLesson}>
+                    <Button color="success" onClick={formik.handleSubmit}>
                       SALVAR
                     </Button>
                   </div>

@@ -35,59 +35,46 @@ export default function CoursesList() {
       workload: "",
       courseActivation: "",
       courseDeactivation: "",
+      enable: true,
     },
     validationSchema,
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: () => {
       handleHideSidebar();
+      !courseToEdit ? addCourse() : editCourse();
     },
   });
 
-  const addCourse = async () => {
-    await formik.handleSubmit();
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const payload = {
-        ...formik.values,
-        enable: true,
-        //check what is the last id, if have none, assumes 1
-        id: courses.length ? courses[courses.length - 1].id + 1 : 1,
-        modules: [],
-      };
-      dispatch(addCourseRequest(payload));
-    }
+  const addCourse = () => {
+    const payload = {
+      ...formik.values,
+      //check what is the last id, if have none, assumes 1
+      id: courses.length ? courses[courses.length - 1].id + 1 : 1,
+      modules: [],
+    };
+    dispatch(addCourseRequest(payload));
   };
 
-  const editCourse = async (changeEnable) => {
-    await formik.handleSubmit();
+  const editCourse = () => {
+    const updatedCourse = {
+      ...formik.values,
+      id: courseToEdit.id,
+      modules: courseToEdit.modules,
+    };
+    const newCoursesArray = courses.map((courseOnMap) => {
+      if (courseOnMap.id === updatedCourse.id) {
+        courseOnMap = updatedCourse;
+      }
+      return courseOnMap;
+    });
 
-    if (
-      formik.errors &&
-      Object.keys(formik.errors).length === 0 &&
-      Object.getPrototypeOf(formik.errors) === Object.prototype
-    ) {
-      const updatedCourse = {
-        ...formik.values,
-        enable:
-          typeof changeEnable === "boolean"
-            ? !courseToEdit.enable
-            : courseToEdit.enable,
-        id: courseToEdit.id,
-        modules: courseToEdit ? courseToEdit.modules : [],
-      };
-      const newCoursesArray = courses.map((courseOnMap) => {
-        if (courseOnMap.id === updatedCourse.id) {
-          courseOnMap = updatedCourse;
-        }
-        return courseOnMap;
-      });
+    dispatch(editCourseSet(newCoursesArray));
+  };
 
-      dispatch(editCourseSet(newCoursesArray));
-    }
+  const handleChangeEnable = () => {
+    formik.setFieldValue("enable", !courseToEdit.enable);
+    formik.handleSubmit();
   };
 
   const removeCourse = (id) => {
@@ -190,7 +177,7 @@ export default function CoursesList() {
               </div>
               {!courseToEdit && (
                 <div className="course-list-bottom-button">
-                  <Button color="success" onClick={addCourse}>
+                  <Button color="success" onClick={formik.handleSubmit}>
                     CRIAR
                   </Button>
                 </div>
@@ -199,11 +186,11 @@ export default function CoursesList() {
                 <div className="course-list-bottom-buttons">
                   <Button
                     color={courseToEdit.enable ? "danger" : "success"}
-                    onClick={() => editCourse(true)}
+                    onClick={handleChangeEnable}
                   >
                     {courseToEdit.enable ? "DESABILITAR" : "HABILITAR"}
                   </Button>
-                  <Button color="success" onClick={editCourse}>
+                  <Button color="success" onClick={formik.handleSubmit}>
                     SALVAR
                   </Button>
                 </div>

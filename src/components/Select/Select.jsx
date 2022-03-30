@@ -1,7 +1,15 @@
 import React from "react";
 import "./select.css";
 
-export default function Select({ label, options, error, onChange, name, id }) {
+export default function Select({
+  label,
+  options,
+  error,
+  onChange,
+  name,
+  id,
+  value,
+}) {
   return (
     <>
       <label htmlFor="select">{label}</label>
@@ -11,6 +19,7 @@ export default function Select({ label, options, error, onChange, name, id }) {
         id={id}
         className={`select ${error ? "select-error" : ""}`}
         onChange={onChange}
+        value={value}
       >
         {options?.length &&
           options.map((option) => (
