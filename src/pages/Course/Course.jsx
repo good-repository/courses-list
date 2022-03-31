@@ -11,9 +11,7 @@ const LESSONS = "lessons";
 export default function Course() {
   const [activeTab, setActiveTab] = useState(MODULES);
   const [showSideBar, setShowSideBar] = useState(false);
-  const modules = useSelector((state) => state.courses.modules);
-  const courses = useSelector((state) => state.courses.courses);
-  const lessons = useSelector((state) => state.courses.lessons);
+  const { modules, lessons, courses } = useSelector((state) => state.courses);
   const { id } = useParams();
   const courseModules = modules.filter(
     (module) => module.courseId === Number(id)
@@ -56,6 +54,7 @@ export default function Course() {
             courseModules={courseModules}
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
+            lessons={lessons}
           />
         )}
         {activeTab === LESSONS && (

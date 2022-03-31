@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   addModuleSet,
   editModuleSet,
+  removeLessonSet,
   removeModuleSet,
 } from "../../../../store/slices/courses/actions";
 import ModuleCard from "../ModuleCard/ModuleCard";
@@ -23,6 +24,7 @@ const validationSchema = Yup.object().shape({
 
 export default function Modules({
   modules,
+  lessons,
   courseId,
   courseModules,
   showSideBar,
@@ -97,6 +99,11 @@ export default function Modules({
   const removeModule = (moduleId) => {
     var filteredModules = modules.filter((module) => module.id !== moduleId);
     dispatch(removeModuleSet(filteredModules));
+
+    var filteredLessons = lessons.filter(
+      (lesson) => lesson.moduleId !== moduleId
+    );
+    dispatch(removeLessonSet(filteredLessons));
   };
 
   const handleChangeEnable = () => {
