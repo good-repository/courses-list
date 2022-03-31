@@ -5,7 +5,7 @@ import IconButton from "../IconButton/IconButton";
 import "./sidebar.css";
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const location = useLocation();
 
   const wrapperRef = useRef(null);
