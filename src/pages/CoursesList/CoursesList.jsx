@@ -14,6 +14,8 @@ import {
   addCourseRequest,
   editCourseSet,
   removeCourseSet,
+  removeLessonSet,
+  removeModuleSet,
 } from "../../store/slices/courses/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -25,7 +27,7 @@ const validationSchema = Yup.object().shape({
 export default function CoursesList() {
   const [showSideBar, setShowSideBar] = useState(false);
   const [courseToEdit, setCourseToEdit] = useState(null);
-  const courses = useSelector((state) => state.courses.courses);
+  const { modules, lessons, courses } = useSelector((state) => state.courses);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -79,8 +81,19 @@ export default function CoursesList() {
 
   const removeCourse = (id) => {
     const arrayWithRemovedCourse = courses.filter((course) => course.id !== id);
-
     dispatch(removeCourseSet(arrayWithRemovedCourse));
+
+    const modulesIdFromThisCourse = modules.map((module) =>
+      module.courseId === id ? module.id : null
+    );
+
+    const filteredModules = modules.filter((module) => module.courseId !== id);
+    dispatch(removeModuleSet(filteredModules));
+
+    const filteredLessons = lessons.filter(
+      (lesson) => !modulesIdFromThisCourse.includes(lesson.moduleId)
+    );
+    dispatch(removeLessonSet(filteredLessons));
   };
 
   const handleShowSidebar = (course) => {

@@ -117,7 +117,7 @@ export default function Lessons({
     dispatch(editLessonSet(updatedLessons));
   };
   const removeLesson = (lessonId) => {
-    var filteredLessons = lessons.filter((lesson) => lesson.id !== lessonId);
+    const filteredLessons = lessons.filter((lesson) => lesson.id !== lessonId);
     dispatch(removeLessonSet(filteredLessons));
   };
 

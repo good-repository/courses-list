@@ -97,10 +97,10 @@ export default function Modules({
   };
 
   const removeModule = (moduleId) => {
-    var filteredModules = modules.filter((module) => module.id !== moduleId);
+    const filteredModules = modules.filter((module) => module.id !== moduleId);
     dispatch(removeModuleSet(filteredModules));
 
-    var filteredLessons = lessons.filter(
+    const filteredLessons = lessons.filter(
       (lesson) => lesson.moduleId !== moduleId
     );
     dispatch(removeLessonSet(filteredLessons));
