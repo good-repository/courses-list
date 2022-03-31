@@ -1,4 +1,3 @@
-
 # Courses List
 
 Hi! The Courses List app is an app simulating the registration of courses and classes. If you wanna see it online click [here](https://good-repository.github.io/courses-list).
@@ -28,3 +27,5 @@ Hi! The Courses List app is an app simulating the registration of courses and cl
 5.  Type "yarn start"/"npm run start"
 
 ### I did no tests here yet, but I have a repository focused on tests take a look, really nice :)
+
+### I'll find older and modern JS code, I made this on purpose for knowledge demonstration only.
